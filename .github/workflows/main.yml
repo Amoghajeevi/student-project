@@ -20,20 +20,26 @@ jobs:
 
       - name: Install Dependencies
         run: npm install
-        working-directory: student-project
 
       - name: Run Tests
-        run: npm test
-        working-directory: student-project
-
+        run: npm test -- --detectOpenHandles  # optional flag to detect async issues
 
   deploy:
     needs: test
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Simulated Deployment
-        run: echo "✅ Simulated Deployment Success!"
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Deploy
+        run: echo "Deployment logic goes here"
+
