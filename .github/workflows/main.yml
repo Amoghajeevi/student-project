@@ -20,9 +20,12 @@ jobs:
 
       - name: Install Dependencies
         run: npm install
+        working-directory: student-project
 
       - name: Run Tests
         run: npm test
+        working-directory: student-project
+
 
   deploy:
     needs: test
