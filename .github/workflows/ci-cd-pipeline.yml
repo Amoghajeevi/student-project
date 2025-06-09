@@ -1,10 +1,6 @@
 name: CI/CD Pipeline
 
-<<<<<<< HEAD
-on: 
-=======
 on:
->>>>>>> 546953b (Added CI/CD pipeline)
   push:
     branches:
       - main
@@ -28,11 +24,7 @@ jobs:
         run: npm install
 
       - name: Run tests
-HEAD
         run: npm test
-
-        run: npm test || echo "Tests failed!"
-546953b (Added CI/CD pipeline)
 
   deploy:
     needs: test
